@@ -1,5 +1,4 @@
 using Assets.Scripts;
-using System;
 using UnityEngine;
 
 public class CarMover : MonoBehaviour
@@ -10,7 +9,7 @@ public class CarMover : MonoBehaviour
     [SerializeField] private Transform _centerOfMass;
     [SerializeField] private float _maxSteer = 30;
     [SerializeField] private float _maxAccel = 500;
-    [SerializeField] private float _maxBrake = 50;
+    [SerializeField] private float _maxBrake = 500;
 
     private void Start()
     {
@@ -19,16 +18,17 @@ public class CarMover : MonoBehaviour
 
     private void Update()
     {
-        Move(_playerSettings.PlayerInput.GetVerticalInput, _playerSettings.PlayerInput.GetHorizontalInput);
+        Move(_playerSettings.PlayerInput.GetVerticalInput, _playerSettings.PlayerInput.GetHorizontalInput, _playerSettings.PlayerInput.GetIsBrake);
     }
 
-    private void Move(float accel, float steer)
+    private void Move(float accel, float steer, bool isBrakePressed)
     {
         foreach (var wheel in _wheelCollidersFront)
         {
             wheel.steerAngle = steer * _maxSteer;
         }
-        if (accel == 0)
+
+        if (isBrakePressed)
         {
             foreach (var wheel in _wheelCollidersFront)
             {
