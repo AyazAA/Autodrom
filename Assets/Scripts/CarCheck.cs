@@ -1,72 +1,74 @@
 using Assets.Scripts;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+    // 1 - Проверка что въехал в бокс, 2 - проверка что закончил, 3 - учёт штрафных баллов
 public class CarCheck : MonoBehaviour
 {
-    [SerializeField] private PlayerSettings _playerSettings;
-    [SerializeField] private CarCollisions _carCollisions;
+    [SerializeField] private List<MistakeControl> _mistakeControls;
     [SerializeField] private BoxCollider _garageCollider;
     [SerializeField] private BoxCollider _finishCollider;
     [SerializeField] private TMP_Text _resultTMP;
     private bool _droveInto = false;
-    private bool _reverseGear = false;
-    private bool _touchedCone = false;
-    private int _reverseCanCount = 1;
+    private int _penaltyPoints = 0;
+    private int _maxPenaltyPoints = 4;
 
     private void Awake()
     {
-        _carCollisions.CarCollidedConeEvent += OnCarCollidedCone;
-    }
-
-
-    private void Update()
-    {
-        if (_playerSettings.PlayerInput.GetVerticalInput < 0 && _reverseCanCount > 0)
+        foreach (var mistakeControl in _mistakeControls)
         {
-            _reverseGear = true;
-        }
-        else if (_playerSettings.PlayerInput.GetVerticalInput < 0 && _reverseCanCount <= 0)
-        {
-            _reverseGear = true;
-            _resultTMP.text = "Нельзя больше одного раза переключаться на заднюю передачу";
-            _resultTMP.gameObject.SetActive(true);
-        }
-        else if (_playerSettings.PlayerInput.GetVerticalInput > 0)
-        {
-            if (_reverseGear)
-            {
-                _reverseCanCount--;
-                _reverseGear = false;
-                if (!_droveInto)
-                {
-                    _resultTMP.text = "Вы не заехали в гараж, за одно включение задней передачи";
-                    _resultTMP.gameObject.SetActive(true);
-                }
-            }
+            mistakeControl.MistakeOccurredEvent += CarGetPenaltyInfo;
         }
     }
 
-    private void OnCarCollidedCone()
+    private void OnDestroy()
     {
-        _touchedCone = true;
-        _resultTMP.text = "Задели конус, начните заново";
+        foreach (var mistakeControl in _mistakeControls)
+        {
+            mistakeControl.MistakeOccurredEvent -= CarGetPenaltyInfo;
+        }
+    }
+
+    private void CarGetPenaltyInfo(int penaltyPoints, string mistakeMessage)
+    {
+        _penaltyPoints += penaltyPoints;
+        if (_penaltyPoints <= _maxPenaltyPoints)
+        {
+            StartCoroutine(StopErrorMessage());
+        }
+        _resultTMP.text = mistakeMessage;
         _resultTMP.gameObject.SetActive(true);
     }
 
     private void OnTriggerStay(Collider other)
     {
+        // Проверка заехал ли в гараж
         if (_garageCollider.bounds.Contains(other.bounds.min) && _garageCollider.bounds.Contains(other.bounds.max) && !_droveInto)
         {
             _droveInto = true;
         }
+        // Проверка финиша
         else if (_finishCollider.bounds.Contains(other.bounds.min) && _finishCollider.bounds.Contains(other.bounds.max))
         {
-            if (_droveInto && _reverseCanCount >= 0 && !_touchedCone)
+            if (_droveInto && _penaltyPoints <= _maxPenaltyPoints)
             {
-                _resultTMP.text = "Вы заехали в гараж";
-                _resultTMP.gameObject.SetActive(true);
+                _resultTMP.text = $"Упражение успешно сдано с {_penaltyPoints} штрафными баллами";
             }
+            else
+            {
+                _resultTMP.text = $"Упражение не сдано с {_penaltyPoints} штрафными баллами";
+            }
+            _resultTMP.gameObject.SetActive(true);
+            Time.timeScale = 0f;
         }
+    }
+
+    private IEnumerator StopErrorMessage()
+    {
+        yield return new WaitForSeconds(4f);
+        _resultTMP.gameObject.SetActive(false);
     }
 }

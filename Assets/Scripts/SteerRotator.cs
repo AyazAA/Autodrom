@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Input;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class SteerRotator : MonoBehaviour
     {
-        [SerializeField] private PlayerSettings _playerSettings;
+        [SerializeField] private PlayerInput _playerInput;
         [Tooltip("degrees per second")]
         [SerializeField] private float _rotateBackSpeed = 500f;
         [Tooltip("degrees per second")]
@@ -19,9 +20,9 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            _angle = Mathf.Clamp(_angle + _playerSettings.PlayerInput.GetHorizontalInput * _rotateSpeed * Time.deltaTime, _minAngle, _maxAngle);
+            _angle = Mathf.Clamp(_angle + _playerInput.GetHorizontalInput * _rotateSpeed * Time.deltaTime, _minAngle, _maxAngle);
 
-            if (Mathf.Approximately(0f, _playerSettings.PlayerInput.GetHorizontalInput))
+            if (Mathf.Approximately(0f, _playerInput.GetHorizontalInput))
             {
                 _angle = Mathf.MoveTowardsAngle(_angle, _neutralAngle, _rotateBackSpeed * Time.deltaTime);
             }

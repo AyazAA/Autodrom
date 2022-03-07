@@ -1,9 +1,9 @@
-using Assets.Scripts;
+using Assets.Scripts.Input;
 using UnityEngine;
 
 public class CarMover : MonoBehaviour
 {
-    [SerializeField] private PlayerSettings _playerSettings;
+    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private WheelCollider[] _wheelCollidersFront;
     [SerializeField] private WheelCollider[] _wheelCollidersBack;
     [SerializeField] private Transform _centerOfMass;
@@ -18,7 +18,7 @@ public class CarMover : MonoBehaviour
 
     private void Update()
     {
-        Move(_playerSettings.PlayerInput.GetVerticalInput, _playerSettings.PlayerInput.GetHorizontalInput, _playerSettings.PlayerInput.GetIsBrake);
+        Move(_playerInput.GetVerticalInput, _playerInput.GetHorizontalInput, _playerInput.GetIsBrake);
     }
 
     private void Move(float accel, float steer, bool isBrakePressed)
