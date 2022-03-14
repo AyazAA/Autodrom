@@ -1,31 +1,45 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnSignalSwitch : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _signalTMP;
+    [SerializeField] private Color _blinkColor = Color.yellow;
+    [SerializeField] private float _delayBetweenBlink = 1f;
+    private static bool _oneSignalOn = false;
+    private Image _buttonBackground;
     private bool _turnSignalOn = false;
-    private string _text;
+    private Color _startColor;
+    private AudioSource _turnSignalAudioSource;
 
     public bool TurnSignalOn => _turnSignalOn;
 
     private void Awake()
     {
-        _text = _signalTMP.text;
+        _buttonBackground = GetComponent<Image>();
+        _startColor = _buttonBackground.color;
+        _turnSignalAudioSource = GetComponent<AudioSource>();
     }
 
     public void ChangeTurnSignalStatus()
     {
         _turnSignalOn = _turnSignalOn ? false : true;
-        if (_turnSignalOn)
+        if (_turnSignalOn && !_oneSignalOn)
         {
             StartCoroutine(TurnSignalBlink());
+            _turnSignalAudioSource.Play();
+            _oneSignalOn = true;
         }
-        else
+        else if(!_turnSignalOn)
         {
             StopAllCoroutines();
-            _signalTMP.text = _text;
+            _turnSignalAudioSource.Stop();
+            _buttonBackground.color = _startColor;
+            _oneSignalOn = false;
+        }
+        else if (_turnSignalOn)
+        {
+            _turnSignalOn = false;
         }
     }
 
@@ -33,10 +47,10 @@ public class TurnSignalSwitch : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            _signalTMP.text = "";
-            yield return new WaitForSeconds(1f);
-            _signalTMP.text = _text;
+            yield return new WaitForSeconds(_delayBetweenBlink);
+            _buttonBackground.color = _startColor;
+            yield return new WaitForSeconds(_delayBetweenBlink);
+            _buttonBackground.color = _blinkColor;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Input;
 using UnityEngine;
 
-
 public class TurnSignalCorrectCheck : MistakeControl
 {
     [SerializeField] private PlayerInput _playerInput;
