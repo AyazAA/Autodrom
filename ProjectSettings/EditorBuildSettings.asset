@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UTurn.unity
     guid: e56e98c68ce6a384e9e6df9b9f64f7a8
+  - enabled: 1
+    path: Assets/Scenes/ParallelParking.unity
+    guid: 81b4758cdc3af8a4f87e938a5f922923
   m_configObjects: {}

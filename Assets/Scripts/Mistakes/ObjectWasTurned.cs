@@ -8,7 +8,7 @@ public class ObjectWasTurned : MistakeControl
     private void Awake()
     {
         PenaltyPoints = 5;
-        PenaltyMessage = "Вы не развернули машину";
+        PenaltyMessage = "Вы не развернули машину, начните заново";
         _areaCollider = GetComponent<BoxCollider>();
     }
 
