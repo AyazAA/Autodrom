@@ -30,10 +30,11 @@ public class PenaltyInfo: MonoBehaviour
     private void CarGetPenaltyInfo(int penaltyPoints, string mistakeMessage)
     {
         _penaltyPoints += penaltyPoints;
-        if (_penaltyPoints <= _maxPenaltyPoints)
-        {
-            _resultWriter.WriteAllowableMistake(mistakeMessage);
-        }
-        _resultWriter.WriteResult(mistakeMessage);
+        _resultWriter.WriteAllowableMistake(mistakeMessage);
+        //if (_penaltyPoints <= _maxPenaltyPoints)
+        //{
+        //    _resultWriter.WriteAllowableMistake(mistakeMessage);
+        //}
+        //_resultWriter.WriteResult(mistakeMessage);
     }
 }

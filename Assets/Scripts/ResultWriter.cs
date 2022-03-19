@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ResultWriter : MonoBehaviour
 {
+    [SerializeField] private float _delayDisappear = 4f;
     private TMP_Text _resultTMP;
 
     private void Awake()
@@ -24,7 +25,7 @@ public class ResultWriter : MonoBehaviour
 
     private IEnumerator StopErrorMessage()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(_delayDisappear);
         _resultTMP.text = "";
     }
 }

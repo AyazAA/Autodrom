@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HelpOpen : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _helpTMP;
+    [SerializeField] private GameObject _helpInfo;
     private bool _helpOpened = false;
 
     public void OpenHelp()
@@ -11,11 +11,11 @@ public class HelpOpen : MonoBehaviour
         _helpOpened = _helpOpened ? false : true;
         if (_helpOpened)
         {
-            _helpTMP.gameObject.SetActive(true);
+            _helpInfo.SetActive(true);
         }
         else
         {
-            _helpTMP.gameObject.SetActive(false);
+            _helpInfo.SetActive(false);
         }
     }
 }

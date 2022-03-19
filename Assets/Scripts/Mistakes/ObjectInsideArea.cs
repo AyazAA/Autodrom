@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ObjectInsideArea : MonoBehaviour
+public class ObjectInsideArea : MistakeControl
 {
     private BoxCollider _areaCollider;
     private bool _droveInto;
@@ -9,7 +9,14 @@ public class ObjectInsideArea : MonoBehaviour
 
     private void Awake()
     {
+        PenaltyPoints = 5;
+        PenaltyMessage = "";
         _areaCollider = GetComponent<BoxCollider>();
+    }
+
+    private void Start()
+    {
+        MistakeOccurredInvoke();
     }
 
     private void OnTriggerStay(Collider other)
@@ -17,6 +24,8 @@ public class ObjectInsideArea : MonoBehaviour
         if (_areaCollider.bounds.Contains(other.bounds.min) && _areaCollider.bounds.Contains(other.bounds.max) && !_droveInto)
         {
             _droveInto = true;
+            PenaltyPoints = -5;
+            MistakeOccurredInvoke();
         }
     }
 }

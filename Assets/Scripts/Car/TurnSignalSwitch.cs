@@ -47,10 +47,10 @@ public class TurnSignalSwitch : MonoBehaviour
     {
         while (true)
         {
+            _buttonBackground.color = _blinkColor;
             yield return new WaitForSeconds(_delayBetweenBlink);
             _buttonBackground.color = _startColor;
             yield return new WaitForSeconds(_delayBetweenBlink);
-            _buttonBackground.color = _blinkColor;
         }
     }
 }

@@ -10,7 +10,7 @@ public class ReverseGearLimiter : MistakeControl
     private void Awake()
     {
         PenaltyPoints = 5;
-        PenaltyMessage = "Нельзя больше двух раз переключаться на заднюю передачу";
+        PenaltyMessage = $"Нельзя больше {_reverseCanCount} раз переключаться на заднюю передачу";
     }
 
     private void Update()
