@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ParallelParking.unity
     guid: 81b4758cdc3af8a4f87e938a5f922923
+  - enabled: 1
+    path: Assets/Scenes/Hill.unity
+    guid: e483989835564d74ca79973c58863eeb
   m_configObjects: {}
