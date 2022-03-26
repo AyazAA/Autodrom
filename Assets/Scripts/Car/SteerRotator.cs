@@ -18,6 +18,11 @@ namespace Assets.Scripts
         [SerializeField] private float _maxAngle = 160f;
         private float _neutralAngle = 0f;
 
+        public void SetSensitivity(float sensitivity)
+        {
+            _rotateSpeed = sensitivity;
+        }
+
         private void Update()
         {
             _angle = Mathf.Clamp(_angle + _playerInput.GetHorizontalInput * _rotateSpeed * Time.deltaTime, _minAngle, _maxAngle);

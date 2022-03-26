@@ -4,7 +4,7 @@ using UnityEngine;
 public class PenaltyInfo: MonoBehaviour
 {
     [SerializeField] private List<MistakeControl> _mistakeControls;
-    [SerializeField] private ResultWriter _resultWriter;
+    [SerializeField] private MistakeWriter _mistakeWriter;
     private int _penaltyPoints = 0;
     private int _maxPenaltyPoints = 4;  
 
@@ -30,11 +30,9 @@ public class PenaltyInfo: MonoBehaviour
     private void CarGetPenaltyInfo(int penaltyPoints, string mistakeMessage)
     {
         _penaltyPoints += penaltyPoints;
-        _resultWriter.WriteAllowableMistake(mistakeMessage);
-        //if (_penaltyPoints <= _maxPenaltyPoints)
-        //{
-        //    _resultWriter.WriteAllowableMistake(mistakeMessage);
-        //}
-        //_resultWriter.WriteResult(mistakeMessage);
+        if(mistakeMessage != string.Empty)
+        {
+            _mistakeWriter.WriteAllowableMistake(mistakeMessage);
+        }
     }
 }
