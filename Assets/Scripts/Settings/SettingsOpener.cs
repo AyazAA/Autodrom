@@ -1,24 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsOpen : MonoBehaviour
+public class SettingsOpener : MonoBehaviour
 {
     [SerializeField] private GameObject _settingsHandler;
-    [SerializeField] private GameObject _pauseHandler;
+    [SerializeField] private PauseMenuOpener _pauseMenu;
     [SerializeField] private SettingsSO _settings;
     [SerializeField] private Toggle _musicToggle;
     [SerializeField] private Toggle _soundToggle;
     [SerializeField] private Slider _sensitivitySlider;
-    private bool _settingsIsOpen = false;
 
     public void SettingShow()
     {
-        if(_pauseHandler != null)
+        if(_pauseMenu != null)
         {
-            _pauseHandler.SetActive(false);
+            _pauseMenu.SetStatus(false);
         }
-        _settingsIsOpen = _settingsIsOpen ? false : true;
-        _settingsHandler.SetActive(_settingsIsOpen);
+        _settingsHandler.SetActive(true);
         _musicToggle.isOn = _settings.MusicOn;
         _soundToggle.isOn = _settings.SoundOn;
         _sensitivitySlider.value = _settings.GetSensetivityBetweenOneZero();
@@ -26,14 +24,15 @@ public class SettingsOpen : MonoBehaviour
         
     public void SettingsClose()
     {
-        _settingsIsOpen = false;
+        if(_pauseMenu != null)
+        {
+            _pauseMenu.SetStatus(true);
+        }
         _settingsHandler.SetActive(false);
-        _pauseHandler?.SetActive(true);
     }
 
     public void SetStatus(bool status)
     {
-        _settingsIsOpen = status;
         _settingsHandler.SetActive(status);
     }
 }

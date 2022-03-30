@@ -1,13 +1,13 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class ArrorAnimationStarter : MonoBehaviour
 {
     [SerializeField] private float _changedScale = 0.7f;
-    [SerializeField] private float _delay = 2f;
+    [SerializeField] private float _delay = 0.2f;
     private Vector2 _startSize;
     private RectTransform _rectTransform;
-
+    private Sequence _animationSequence;
 
     private void Start()
     {
@@ -15,15 +15,21 @@ public class ArrorAnimationStarter : MonoBehaviour
         _startSize = _rectTransform.sizeDelta;
     }
 
-    public void PlayAnimation()
+    private void OnDestroy()
     {
-        StartCoroutine(AnimationCoroutine());
+        _animationSequence.Kill();
     }
 
-    private IEnumerator AnimationCoroutine()
+    public void PlayAnimation()
     {
-        _rectTransform.sizeDelta = new Vector2(_startSize.x * _changedScale, _startSize.y * _changedScale);
-        yield return new WaitForSeconds(_delay);
-        _rectTransform.sizeDelta = _startSize;
+        if(_animationSequence == null)
+        {
+            _animationSequence = DOTween.Sequence();
+            _animationSequence.AppendCallback(() => { _rectTransform.sizeDelta = new Vector2(_startSize.x * _changedScale, _startSize.y * _changedScale); print("Start"); });
+            _animationSequence.AppendInterval(_delay);
+            _animationSequence.AppendCallback(() => { _rectTransform.sizeDelta = _startSize; print("End"); });
+            _animationSequence.SetAutoKill(false);
+        }
+        _animationSequence.Restart();
     }
 }
