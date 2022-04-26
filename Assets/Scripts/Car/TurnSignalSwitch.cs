@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +6,7 @@ public class TurnSignalSwitch : MonoBehaviour
 {
     [SerializeField] private Color _blinkColor = Color.yellow;
     [SerializeField] private float _delayBetweenBlink = 1f;
-    private static bool _oneSignalOn = false;
+    private static bool _oneSignalOn;
     private Image _buttonBackground;
     private bool _turnSignalOn = false;
     private Color _startColor;
@@ -18,6 +17,7 @@ public class TurnSignalSwitch : MonoBehaviour
 
     private void Awake()
     {
+        _oneSignalOn = false;
         _buttonBackground = GetComponent<Image>();
         _startColor = _buttonBackground.color;
         _turnSignalAudioSource = GetComponent<AudioSource>();
