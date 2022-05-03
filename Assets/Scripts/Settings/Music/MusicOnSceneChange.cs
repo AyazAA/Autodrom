@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Toggle))]
 public class MusicOnSceneChange: MonoBehaviour
 {
     [SerializeField] private AudioSource _musicSource;

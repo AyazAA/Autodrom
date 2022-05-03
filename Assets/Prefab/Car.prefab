@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 3658854620421604860}
+  _sensitivityOnSceneChange: {fileID: 0}
   _rotateBackSpeed: 500
   _rotateSpeed: 350
   _angle: 0
@@ -515,7 +516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51260edd9350a5346a8dbdb4114a3405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backgroundMusic: {fileID: 3657091842316290633}
   _settings: {fileID: 11400000, guid: 54dac99ab8d063942a73d36814268b91, type: 2}
 --- !u!114 &1517008645
 MonoBehaviour:
@@ -720,6 +720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3657091843459822383}
+  - component: {fileID: 506159053564233671}
   m_Layer: 0
   m_Name: CenterOfMass
   m_TagString: Untagged
@@ -741,6 +742,18 @@ Transform:
   m_Father: {fileID: 3661351195037986724}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &506159053564233671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657091843459822382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b626158403e854f9c17f5a0cdcc890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3657091843633344349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3251,6 +3264,7 @@ GameObject:
   - component: {fileID: 3661618171703682492}
   - component: {fileID: 3654121198388745784}
   - component: {fileID: 3613318000864290174}
+  - component: {fileID: 1698338651}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -3298,6 +3312,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300050, guid: 8a6162aebed146c4a9dd601b3c4027a7, type: 3}
+--- !u!114 &1698338651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658482820816700820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 850d663cea93c8641afb0e4a6f60c40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3658517215083296010
 GameObject:
   m_ObjectHideFlags: 0
@@ -4641,7 +4667,7 @@ MonoBehaviour:
   _wheelCollidersBack:
   - {fileID: 3657091842316290638}
   - {fileID: 3657091842316290634}
-  _centerOfMass: {fileID: 3657091843459822383}
+  _centerOfMass: {fileID: 506159053564233671}
   _maxSteer: 30
   _maxAccel: 750
   _maxBrake: 500

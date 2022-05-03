@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image), typeof(AudioSource))]
 public class TurnSignalSwitch : MonoBehaviour
 {
     [SerializeField] private Color _blinkColor = Color.yellow;

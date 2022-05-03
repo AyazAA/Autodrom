@@ -13,6 +13,11 @@ public class CameraRotator : MonoBehaviour
 
     private void Update()
     {
+        CameraRotate();
+    }
+
+    private void CameraRotate()
+    {
         if (Input.GetKey(KeyCode.End))
         {
             transform.localRotation = new Quaternion(_startRotation.x, _maxAngle, _startRotation.z, _startRotation.w);

@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts;
 using UnityEngine;
 
+[RequireComponent(typeof(SteerRotator))]
 public class SensitivityInstaller : MonoBehaviour
 {
     [SerializeField] private SettingsSO _settings;
@@ -9,6 +10,6 @@ public class SensitivityInstaller : MonoBehaviour
     private void Awake()
     {
         _steerRotator = GetComponent<SteerRotator>();
-        _steerRotator.SetSensitivity(_settings.SteerSensitivity);
+        _steerRotator.Initialize(_settings.SteerSensitivity);
     }
 }

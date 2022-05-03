@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PauseMenuOpener : MonoBehaviour
 {
-    [SerializeField] private GameObject _pauseHandler;
+    [SerializeField] private PauseHandlerUI _pauseHandler;
     [SerializeField] private HelpOpener _infoHandler;
     [SerializeField] private SettingsOpener _settingsHandler;
     private ScreenDarkening _screenDarkening;
@@ -32,18 +32,25 @@ public class PauseMenuOpener : MonoBehaviour
 
     private void PauseMenuShow()
     {
-        _pauseHandler.SetActive(true);
+        _pauseHandler.Show();
     }
 
     private void PauseMenuHide()
     {
-        _pauseHandler.SetActive(false);
+        _pauseHandler.Hide();
         _infoHandler.SetStatus(false);
         _settingsHandler.SetStatus(false);
     }
 
     public void SetStatus(bool status)
     {
-        _pauseHandler.SetActive(status);
+        if (status == true)
+        { 
+            _pauseHandler.Show(); 
+        }
+        else 
+        { 
+            _pauseHandler.Hide(); 
+        }
     }
 }

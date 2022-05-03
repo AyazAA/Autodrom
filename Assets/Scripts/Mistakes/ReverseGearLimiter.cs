@@ -15,6 +15,11 @@ public class ReverseGearLimiter : MistakeControl
 
     private void Update()
     {
+        ReverseGearCheck();
+    }
+
+    private void ReverseGearCheck()
+    {
         if (_playerInput.GetVerticalInput < 0 && _reverseCanCount > 0)
         {
             _reverseGear = true;

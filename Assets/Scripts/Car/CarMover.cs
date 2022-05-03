@@ -1,11 +1,12 @@
 using Assets.Scripts.Input;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInput), typeof(Rigidbody))]
 public class CarMover : MonoBehaviour
 {
     [SerializeField] private WheelCollider[] _wheelCollidersFront;
     [SerializeField] private WheelCollider[] _wheelCollidersBack;
-    [SerializeField] private Transform _centerOfMass;
+    [SerializeField] private CenterOfMass _centerOfMass;
     [SerializeField] private float _maxSteer = 30;
     [SerializeField] private float _maxAccel = 500;
     [SerializeField] private float _maxBrake = 500;
@@ -15,7 +16,7 @@ public class CarMover : MonoBehaviour
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
-        GetComponent<Rigidbody>().centerOfMass = _centerOfMass.localPosition;
+        GetComponent<Rigidbody>().centerOfMass = _centerOfMass.transform.localPosition;
     }
 
     private void Update()

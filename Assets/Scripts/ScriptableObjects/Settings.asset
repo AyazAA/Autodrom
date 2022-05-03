@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   MusicOn: 1
-  SoundOn: 0
-  SteerSensitivity: 100
+  SoundOn: 1
+  SteerSensitivity: 137

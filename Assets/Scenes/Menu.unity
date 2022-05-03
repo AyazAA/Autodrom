@@ -1963,7 +1963,7 @@ RectTransform:
   - {fileID: 1226554017}
   - {fileID: 937934951}
   m_Father: {fileID: 1815721597}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2486,7 +2486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d624acd8c45de45408316e51e8f5dba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _settingsHandler: {fileID: 1887274505}
+  _settingsHandler: {fileID: 1887274509}
   _pauseMenu: {fileID: 0}
   _settings: {fileID: 11400000, guid: 54dac99ab8d063942a73d36814268b91, type: 2}
   _musicToggle: {fileID: 1847698099}
@@ -3277,6 +3277,7 @@ GameObject:
   - component: {fileID: 1887274506}
   - component: {fileID: 1887274508}
   - component: {fileID: 1887274507}
+  - component: {fileID: 1887274509}
   m_Layer: 5
   m_Name: SettingsHandler
   m_TagString: Untagged
@@ -3344,6 +3345,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887274505}
   m_CullTransparentMesh: 1
+--- !u!114 &1887274509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887274505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc600842efff3141858b676b3869a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1918275628
 GameObject:
   m_ObjectHideFlags: 0

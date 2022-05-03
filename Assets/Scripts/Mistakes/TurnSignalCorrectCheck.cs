@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Input;
 using UnityEngine;
 
+[RequireComponent(typeof(TurnSignalSwitch))]
 public class TurnSignalCorrectCheck : MistakeControl
 {
     [SerializeField] private PlayerInput _playerInput;
@@ -17,9 +18,14 @@ public class TurnSignalCorrectCheck : MistakeControl
 
     private void Update()
     {
+        TurnSignalCheck();
+    }
+
+    private void TurnSignalCheck()
+    {
         if ((!_turnSignalSwitch.TurnSignalOn && _nitralWheel) &&
-            ((_playerInput.GetHorizontalInput > 0 && !_isLeftTurnSignal) ||
-            (_playerInput.GetHorizontalInput < 0 && _isLeftTurnSignal)))
+                    ((_playerInput.GetHorizontalInput > 0 && !_isLeftTurnSignal) ||
+                    (_playerInput.GetHorizontalInput < 0 && _isLeftTurnSignal)))
         {
             MistakeOccurredInvoke();
             _nitralWheel = false;

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SettingsOpener : MonoBehaviour
 {
-    [SerializeField] private GameObject _settingsHandler;
+    [SerializeField] private SettingsHandler _settingsHandler;
     [SerializeField] private PauseMenuOpener _pauseMenu;
     [SerializeField] private SettingsSO _settings;
     [SerializeField] private Toggle _musicToggle;
@@ -16,7 +16,7 @@ public class SettingsOpener : MonoBehaviour
         {
             _pauseMenu.SetStatus(false);
         }
-        _settingsHandler.SetActive(true);
+        _settingsHandler.gameObject.SetActive(true);
         _musicToggle.isOn = _settings.MusicOn;
         _soundToggle.isOn = _settings.SoundOn;
         _sensitivitySlider.value = _settings.GetSensetivityBetweenOneZero();
@@ -28,11 +28,11 @@ public class SettingsOpener : MonoBehaviour
         {
             _pauseMenu.SetStatus(true);
         }
-        _settingsHandler.SetActive(false);
+        _settingsHandler.gameObject.SetActive(false);
     }
 
     public void SetStatus(bool status)
     {
-        _settingsHandler.SetActive(status);
+        _settingsHandler.gameObject.SetActive(status);
     }
 }

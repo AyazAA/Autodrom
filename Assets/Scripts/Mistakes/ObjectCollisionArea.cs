@@ -10,6 +10,9 @@ public class ObjectCollisionArea : MistakeControl
 
     private void OnCollisionEnter(Collision collision)
     {
-        MistakeOccurredInvoke();
+        if(collision.gameObject.TryGetComponent<CarMover>(out var carMover))
+        {
+            MistakeOccurredInvoke();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Toggle))]
 public class MusicSettingChange : MonoBehaviour
 {
     [SerializeField] private SettingsSO _settings;

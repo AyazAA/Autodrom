@@ -5,7 +5,7 @@ using UnityEngine;
 public class MistakeWriter : MonoBehaviour
 {
     [SerializeField] private float _delayDisappear = 4f;
-    [SerializeField] private GameObject _mistakeUI;
+    [SerializeField] private Mistake _mistakeUI;
     [SerializeField] private TMP_Text _mistakeTMP;
     private Sequence _hideMessageSequence;
 
@@ -16,7 +16,7 @@ public class MistakeWriter : MonoBehaviour
 
     public void WriteAllowableMistake(string mistake)
     {
-        _mistakeUI.SetActive(true);
+        _mistakeUI.gameObject.SetActive(true);
         _mistakeTMP.text = mistake;
         StopErrorMessage();
     }
@@ -27,7 +27,7 @@ public class MistakeWriter : MonoBehaviour
         {
             _hideMessageSequence = DOTween.Sequence();
             _hideMessageSequence.AppendInterval(_delayDisappear);
-            _hideMessageSequence.AppendCallback(() => { _mistakeUI.SetActive(false); });
+            _hideMessageSequence.AppendCallback(() => { _mistakeUI.gameObject.SetActive(false); });
             _hideMessageSequence.SetAutoKill(false);
         }
         _hideMessageSequence.Restart();

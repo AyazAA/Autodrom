@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class ObjectWasTurned : MistakeControl
 {
     private BoxCollider _areaCollider;

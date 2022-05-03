@@ -6,6 +6,7 @@ namespace Assets.Scripts
     public class SteerRotator : MonoBehaviour
     {
         [SerializeField] private PlayerInput _playerInput;
+        [SerializeField] private SensitivityOnSceneChange _sensitivityOnSceneChange;
         [Tooltip("degrees per second")]
         [SerializeField] private float _rotateBackSpeed = 500f;
         [Tooltip("degrees per second")]
@@ -18,7 +19,18 @@ namespace Assets.Scripts
         [SerializeField] private float _maxAngle = 160f;
         private float _neutralAngle = 0f;
 
-        public void SetSensitivity(float sensitivity)
+        public void Initialize(float sensitivity)
+        {
+            _rotateSpeed = sensitivity;
+            _sensitivityOnSceneChange.OnSensitivityChanged += SetSensitivity;
+        }
+
+        private void OnDestroy()
+        {
+            _sensitivityOnSceneChange.OnSensitivityChanged -= SetSensitivity;
+        }
+
+        private void SetSensitivity(float sensitivity)
         {
             _rotateSpeed = sensitivity;
         }
