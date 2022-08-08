@@ -20,7 +20,7 @@ public class ObjectWasTurned : MistakeControl
             _droveInto = true;
             if (!(other.transform.eulerAngles.y > 160f && other.transform.eulerAngles.y < 200f))
             {
-                MistakeOccurredInvoke();
+                MistakeOccurringInvoke();
             }
         }
     }

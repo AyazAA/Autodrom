@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SensitivitySettingChange : MonoBehaviour
+[RequireComponent(typeof(Slider))]
+public class SensitivitySettingChanger : MonoBehaviour
 {
     [SerializeField] private SettingsSO _settings;
     private Slider _sensitivitySlider;

@@ -8,7 +8,7 @@ public class ResultWriter : MonoBehaviour
 
     public void WriteResult(string result)
     {
-        _resultUI.gameObject.SetActive(true);
+        _resultUI.Show();
         _resultTMP.text = result;
     }
 }

@@ -35,7 +35,7 @@ public class BrakeInClimbing : MistakeControl
             if (!_brakeWasOn)
             {
                 _brakeWasOn = true;
-                MistakeOccurredInvoke();
+                MistakeOccurringInvoke();
             }
         }
     }

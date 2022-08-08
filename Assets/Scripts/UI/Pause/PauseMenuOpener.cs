@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ScreenDarkening))]
 public class PauseMenuOpener : MonoBehaviour
 {
     [SerializeField] private PauseHandlerUI _pauseHandler;

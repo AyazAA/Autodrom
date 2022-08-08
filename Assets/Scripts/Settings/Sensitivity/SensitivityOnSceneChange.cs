@@ -3,9 +3,10 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Slider))]
 public class SensitivityOnSceneChange : MonoBehaviour
 {
-    public event Action<float> OnSensitivityChanged;
+    public event Action<float> SensitivityChanging;
     private Slider _sensitivitySlider;
 
     private void Awake()
@@ -16,6 +17,6 @@ public class SensitivityOnSceneChange : MonoBehaviour
     public void ChangeOnSceneStatus()
     {
         float sensitivity = 700 * _sensitivitySlider.value + 100;
-        OnSensitivityChanged?.Invoke(sensitivity);
+        SensitivityChanging?.Invoke(sensitivity);
     }
 }

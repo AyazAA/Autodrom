@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Toggle))]
 public class SoundOnSceneChange : MonoBehaviour
 {
     [SerializeField] private List<AudioSource> _soundSourceList;

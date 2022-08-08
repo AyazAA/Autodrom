@@ -16,7 +16,7 @@ public class MistakeWriter : MonoBehaviour
 
     public void WriteAllowableMistake(string mistake)
     {
-        _mistakeUI.gameObject.SetActive(true);
+        _mistakeUI.Show();
         _mistakeTMP.text = mistake;
         StopErrorMessage();
     }
@@ -27,7 +27,7 @@ public class MistakeWriter : MonoBehaviour
         {
             _hideMessageSequence = DOTween.Sequence();
             _hideMessageSequence.AppendInterval(_delayDisappear);
-            _hideMessageSequence.AppendCallback(() => { _mistakeUI.gameObject.SetActive(false); });
+            _hideMessageSequence.AppendCallback(() => { _mistakeUI.Hide(); });
             _hideMessageSequence.SetAutoKill(false);
         }
         _hideMessageSequence.Restart();

@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SwapImage : MonoBehaviour
+[RequireComponent(typeof(Image))]
+public class ImagesSwapper : MonoBehaviour
 {
     [SerializeField] private Sprite _pic1;
     [SerializeField] private Sprite _pic2;

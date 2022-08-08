@@ -3,12 +3,12 @@ using UnityEngine;
 
 public abstract class MistakeControl: MonoBehaviour
 {
-    public event Action<int, string> MistakeOccurredEvent;
+    public event Action<int, string> MistakeOccurring;
     protected int PenaltyPoints = 0;
     protected string PenaltyMessage = "";
 
-    protected void MistakeOccurredInvoke()
+    protected void MistakeOccurringInvoke()
     {
-        MistakeOccurredEvent?.Invoke(PenaltyPoints, PenaltyMessage);
+        MistakeOccurring?.Invoke(PenaltyPoints, PenaltyMessage);
     }
 }

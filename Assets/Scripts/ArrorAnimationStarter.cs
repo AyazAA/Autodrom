@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
+[RequireComponent(typeof(RectTransform))]
 public class ArrorAnimationStarter : MonoBehaviour
 {
     [SerializeField] private float _changedScale = 0.7f;

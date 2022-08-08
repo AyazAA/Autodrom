@@ -15,7 +15,7 @@ public class PenaltyInfo: MonoBehaviour
     {
         foreach (var mistakeControl in _mistakeControls)
         {
-            mistakeControl.MistakeOccurredEvent += CarGetPenaltyInfo;
+            mistakeControl.MistakeOccurring += CarGetPenaltyInfo;
         }
     }
 
@@ -23,7 +23,7 @@ public class PenaltyInfo: MonoBehaviour
     {
         foreach (var mistakeControl in _mistakeControls)
         {
-            mistakeControl.MistakeOccurredEvent -= CarGetPenaltyInfo;
+            mistakeControl.MistakeOccurring -= CarGetPenaltyInfo;
         }
     }
 

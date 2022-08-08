@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class FinishCheck : MonoBehaviour
+[RequireComponent(typeof(PenaltyInfo), typeof(BoxCollider))]
+public class FinishController : MonoBehaviour
 {
     [SerializeField] private ResultWriter _resultWriter;
     private BoxCollider _finishCollider;
@@ -18,11 +19,11 @@ public class FinishCheck : MonoBehaviour
         {
             if (_penaltyInfo.PenaltyPoints <= _penaltyInfo.MaxPenaltyPoints)
             {
-                _resultWriter.WriteResult($"”пражение успешно сдано с {_penaltyInfo.PenaltyPoints} штрафными баллами");
+                _resultWriter.WriteResult($"”пражнение успешно сдано с {_penaltyInfo.PenaltyPoints} штрафными баллами");
             }
             else
             {
-                _resultWriter.WriteResult($"”пражение не сдано с {_penaltyInfo.PenaltyPoints} штрафными баллами");
+                _resultWriter.WriteResult($"”пражнение не сдано с {_penaltyInfo.PenaltyPoints} штрафными баллами");
             }
             Time.timeScale = 0f;
         }

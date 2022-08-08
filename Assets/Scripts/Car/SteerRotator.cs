@@ -22,12 +22,12 @@ namespace Assets.Scripts
         public void Initialize(float sensitivity)
         {
             _rotateSpeed = sensitivity;
-            _sensitivityOnSceneChange.OnSensitivityChanged += SetSensitivity;
+            _sensitivityOnSceneChange.SensitivityChanging += SetSensitivity;
         }
 
         private void OnDestroy()
         {
-            _sensitivityOnSceneChange.OnSensitivityChanged -= SetSensitivity;
+            _sensitivityOnSceneChange.SensitivityChanging -= SetSensitivity;
         }
 
         private void SetSensitivity(float sensitivity)

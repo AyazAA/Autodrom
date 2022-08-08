@@ -7593,6 +7593,7 @@ GameObject:
   - component: {fileID: 1364687831}
   - component: {fileID: 1364687830}
   - component: {fileID: 1364687829}
+  - component: {fileID: 1364687833}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -7633,10 +7634,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settingsHandler: {fileID: 1641937254}
   _pauseMenu: {fileID: 1346896221}
-  _settings: {fileID: 11400000, guid: 54dac99ab8d063942a73d36814268b91, type: 2}
-  _musicToggle: {fileID: 1990997279}
-  _soundToggle: {fileID: 750732677}
-  _sensitivitySlider: {fileID: 88041344}
 --- !u!114 &1364687830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7731,6 +7728,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364687827}
   m_CullTransparentMesh: 1
+--- !u!114 &1364687833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364687827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3c8f0ff64f8794294d62416be64c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settings: {fileID: 11400000, guid: 54dac99ab8d063942a73d36814268b91, type: 2}
+  _musicToggle: {fileID: 1990997279}
+  _soundToggle: {fileID: 750732677}
+  _sensitivitySlider: {fileID: 88041344}
 --- !u!1001 &1371801737
 PrefabInstance:
   m_ObjectHideFlags: 0

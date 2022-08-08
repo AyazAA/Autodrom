@@ -8,7 +8,7 @@ public class CarCollisions : MistakeControl
         {
             PenaltyPoints = _carDamageable.GetPenaltyPoints();
             PenaltyMessage = _carDamageable.GetMistakeMessage();
-            MistakeOccurredInvoke();
+            MistakeOccurringInvoke();
         }
     }
 }

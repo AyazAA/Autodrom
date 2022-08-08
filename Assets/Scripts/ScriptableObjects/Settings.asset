@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cc4415d6ebb0e4d982adbf8b4cb3be, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  MusicOn: 1
+  MusicOn: 0
   SoundOn: 1
-  SteerSensitivity: 137
+  SteerSensitivity: 448

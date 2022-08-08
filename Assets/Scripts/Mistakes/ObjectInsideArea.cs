@@ -17,7 +17,7 @@ public class ObjectInsideArea : MistakeControl
 
     private void Start()
     {
-        MistakeOccurredInvoke();
+        MistakeOccurringInvoke();
     }
 
     private void OnTriggerStay(Collider other)
@@ -29,7 +29,7 @@ public class ObjectInsideArea : MistakeControl
         {
             _droveInto = true;
             PenaltyPoints = -5;
-            MistakeOccurredInvoke();
+            MistakeOccurringInvoke();
         }
     }
 }

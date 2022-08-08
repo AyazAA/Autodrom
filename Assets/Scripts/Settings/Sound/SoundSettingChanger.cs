@@ -2,18 +2,18 @@
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Toggle))]
-public class MusicSettingChange : MonoBehaviour
+public class SoundSettingChanger : MonoBehaviour
 {
     [SerializeField] private SettingsSO _settings;
-    private Toggle _musicToggle;
+    private Toggle _soundToggle;
 
     private void Awake()
     {
-        _musicToggle = GetComponent<Toggle>();
+        _soundToggle = GetComponent<Toggle>();
     }
 
     public void ChangeStatus()
     {
-        _settings.MusicOn = _musicToggle.isOn;
+        _settings.SoundOn = _soundToggle.isOn;
     }
 }

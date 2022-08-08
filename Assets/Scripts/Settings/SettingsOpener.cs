@@ -1,38 +1,45 @@
 using UnityEngine;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(SettingsInstaller))]
 public class SettingsOpener : MonoBehaviour
 {
     [SerializeField] private SettingsHandler _settingsHandler;
     [SerializeField] private PauseMenuOpener _pauseMenu;
-    [SerializeField] private SettingsSO _settings;
-    [SerializeField] private Toggle _musicToggle;
-    [SerializeField] private Toggle _soundToggle;
-    [SerializeField] private Slider _sensitivitySlider;
+    private SettingsInstaller _settingsInstaller;
+
+    private void Start()
+    {
+        _settingsInstaller = GetComponent<SettingsInstaller>();
+    }
 
     public void SettingShow()
     {
-        if(_pauseMenu != null)
+        if (_pauseMenu != null)
         {
             _pauseMenu.SetStatus(false);
         }
-        _settingsHandler.gameObject.SetActive(true);
-        _musicToggle.isOn = _settings.MusicOn;
-        _soundToggle.isOn = _settings.SoundOn;
-        _sensitivitySlider.value = _settings.GetSensetivityBetweenOneZero();
+        _settingsHandler.Show();
+        _settingsInstaller.InitializeSettings();
     }
-        
+
     public void SettingsClose()
     {
-        if(_pauseMenu != null)
+        if (_pauseMenu != null)
         {
             _pauseMenu.SetStatus(true);
         }
-        _settingsHandler.gameObject.SetActive(false);
+        _settingsHandler.Hide();
     }
 
     public void SetStatus(bool status)
     {
-        _settingsHandler.gameObject.SetActive(status);
+        if (status)
+        {
+            _settingsHandler.Show();
+        }
+        else
+        {
+            _settingsHandler.Hide();
+        }
     }
 }

@@ -27,7 +27,7 @@ public class TurnSignalCorrectCheck : MistakeControl
                     ((_playerInput.GetHorizontalInput > 0 && !_isLeftTurnSignal) ||
                     (_playerInput.GetHorizontalInput < 0 && _isLeftTurnSignal)))
         {
-            MistakeOccurredInvoke();
+            MistakeOccurringInvoke();
             _nitralWheel = false;
         }
         else if (_playerInput.GetHorizontalInput == 0)
